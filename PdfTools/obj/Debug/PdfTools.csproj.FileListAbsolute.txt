@@ -1,0 +1,15 @@
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\bin\Debug\PdfTools.exe.config
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\bin\Debug\PdfTools.exe
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\bin\Debug\PdfTools.pdb
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.Properties.Resources.resources
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.csproj.GenerateResource.cache
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.csproj.CoreCompileInputs.cache
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.exe
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.pdb
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.Pages.MainPage.resources
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.Pages.PdfGeneratorPage.resources
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\bin\Debug\itextsharp.dll
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\bin\Debug\itextsharp.xml
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.csproj.CopyComplete
+C:\Users\yushanliu\Desktop\PdfTools\PdfTools\obj\Debug\PdfTools.csprojAssemblyReference.cache
