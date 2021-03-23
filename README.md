@@ -11,10 +11,9 @@ Every operation is performed locally, your images/files will not be stored on an
 6. drop and drop images
 7. images should be resized accordingly
 	a. user should be able to select how they want the images to be like, i.e.: fit to the file, original size.
+	b. user should be able to choose the layout, i.e.: one image per page, or multiple images on one page
+8. user can select the paper size
 
-# TODO
-	- user should be able to choose the layout, i.e.: one image per page, or multiple images on one page
-- add reusable back/exit button
 
 # next step
 - Compress pdf files

@@ -24,15 +24,32 @@ namespace PdfTools.Pages
         private readonly int HorizontalMargin = 20;
         private readonly int NumImagesOnARow = 5;
 
-        //private List<string> images = new List<string>();
         private List<PictureBox> pictureBoxes = new List<PictureBox>();
         private System.Drawing.Image dragToPictureBoxImage;
-        private ImageFitType selectedImageFitType;
+        //private ImageFitType selectedImageFitType;
+        //private LayoutType selectedLayoutType;
 
         public PdfGeneratorPage()
         {
-            InitializeComponent();
+            InitializeCustomComponent();
             InitializeOpenImageDialog();
+        }
+
+        private void InitializeCustomComponent()
+        {
+            InitializeComponent();
+
+            this.ChooseImageFitStyleListBox.ValueMember = "Key";
+            this.ChooseImageFitStyleListBox.DisplayMember = "Value";
+            this.ChooseImageFitStyleListBox.DataSource = EnumHelper.GetEnumValueDescriptionPairs<ImageFitType>();
+
+            this.ChooseLayoutListBox.ValueMember = "Key";
+            this.ChooseLayoutListBox.DisplayMember = "Value";
+            this.ChooseLayoutListBox.DataSource = EnumHelper.GetEnumValueDescriptionPairs<LayoutType>();
+
+            this.ChoosePaperSizeListBox.ValueMember = "Key";
+            this.ChoosePaperSizeListBox.DisplayMember = "Value";
+            this.ChoosePaperSizeListBox.DataSource = EnumHelper.GetEnumValueDescriptionPairs<PaperSizeType>();
         }
 
         private void InitializeOpenImageDialog()
@@ -86,7 +103,7 @@ namespace PdfTools.Pages
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string uniqueSuffix = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
             FileStream fileStream = File.Create(desktopPath + @"\Merged_" + uniqueSuffix + ".pdf");
-            Document document = new Document();
+            Document document = new Document(GetPaperSize(), 0, 0, 0, 0);
 
             using (var pdfWriter = PdfWriter.GetInstance(document, fileStream))
             {
@@ -97,7 +114,12 @@ namespace PdfTools.Pages
                     string imagePath = (string)pb.Image.Tag;
                     using (FileStream imageStream = File.OpenRead(imagePath))
                     {
-                        document.NewPage();
+                        if (ChooseLayoutListBox.SelectedIndex == (int)LayoutType.onePerPage ||
+                            ChooseImageFitStyleListBox.SelectedIndex == (int)ImageFitType.fill)
+                        {
+                            document.NewPage();
+                        }
+                        
                         iTextSharp.text.Image image = GetProperSizedImage(imageStream, document.PageSize);
 
                         document.Add(image);
@@ -160,20 +182,50 @@ namespace PdfTools.Pages
 
         private void ChooseImageFitStyleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedImageFitType = (ImageFitType)ChooseImageFitStyleListBox.SelectedIndex;
+            if (ChooseImageFitStyleListBox.SelectedIndex == (int)ImageFitType.fill)
+            {
+                this.ChooseLayoutListBox.Enabled = false;
+            }
+            else
+            {
+                this.ChooseLayoutListBox.Enabled = true;
+            }
         }
 
         private iTextSharp.text.Image GetProperSizedImage(FileStream imageStream, iTextSharp.text.Rectangle pageSize)
         {
             iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageStream);
 
-            if (selectedImageFitType == ImageFitType.fill)
+            if (ChooseImageFitStyleListBox.SelectedIndex == (int)ImageFitType.fill)
             {
                 image.SetAbsolutePosition(0, 0);
-                image.ScaleAbsoluteWidth(pageSize.Width);
-                image.ScaleAbsoluteHeight(pageSize.Height);
+                image.ScaleAbsolute(pageSize.Width, pageSize.Height);
+            }
+            else if (ChooseImageFitStyleListBox.SelectedIndex == (int)ImageFitType.contain)
+            {
+                image.Alignment = Element.ALIGN_LEFT;
+                if (image.Width > pageSize.Width || image.Height > pageSize.Height)
+                {
+                    image.ScaleToFit(pageSize.Width, pageSize.Height);
+                }
             }
             return image;
+        }
+
+        private iTextSharp.text.Rectangle GetPaperSize()
+        {
+            iTextSharp.text.Rectangle rectangle = new iTextSharp.text.Rectangle(0, 0);
+            switch (ChoosePaperSizeListBox.SelectedIndex)
+            {
+                case (int)PaperSizeType.usLetter:
+                    rectangle = new iTextSharp.text.Rectangle(563, 750);
+                    break;
+                case (int)PaperSizeType.a4:
+                    rectangle = new iTextSharp.text.Rectangle(595, 842);
+                    break;
+            }
+
+            return rectangle;
         }
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)

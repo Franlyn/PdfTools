@@ -36,6 +36,10 @@ namespace PdfTools.Pages
             this.MergeImagesButton = new System.Windows.Forms.Button();
             this.ChooseImageFitStyleListBox = new System.Windows.Forms.ListBox();
             this.ChooseImageFitStyleLabel = new System.Windows.Forms.Label();
+            this.ChooseLayoutLabel = new System.Windows.Forms.Label();
+            this.ChooseLayoutListBox = new System.Windows.Forms.ListBox();
+            this.ChoosePaperSizeLabel = new System.Windows.Forms.Label();
+            this.ChoosePaperSizeListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // SelectImagesButton
@@ -68,9 +72,6 @@ namespace PdfTools.Pages
             this.ChooseImageFitStyleListBox.AllowDrop = true;
             this.ChooseImageFitStyleListBox.FormattingEnabled = true;
             this.ChooseImageFitStyleListBox.ItemHeight = 24;
-            this.ChooseImageFitStyleListBox.Items.AddRange(new object[] {
-            "Fill",
-            "Contain"});
             this.ChooseImageFitStyleListBox.Location = new System.Drawing.Point(1769, 371);
             this.ChooseImageFitStyleListBox.Name = "ChooseImageFitStyleListBox";
             this.ChooseImageFitStyleListBox.Size = new System.Drawing.Size(230, 76);
@@ -86,11 +87,55 @@ namespace PdfTools.Pages
             this.ChooseImageFitStyleLabel.TabIndex = 3;
             this.ChooseImageFitStyleLabel.Text = "Choose a Fit:";
             // 
+            // ChooseLayoutLabel
+            // 
+            this.ChooseLayoutLabel.AutoSize = true;
+            this.ChooseLayoutLabel.Location = new System.Drawing.Point(1764, 491);
+            this.ChooseLayoutLabel.Name = "ChooseLayoutLabel";
+            this.ChooseLayoutLabel.Size = new System.Drawing.Size(176, 25);
+            this.ChooseLayoutLabel.TabIndex = 5;
+            this.ChooseLayoutLabel.Text = "Choose the layout:";
+            // 
+            // ChooseLayoutListBox
+            // 
+            this.ChooseLayoutListBox.AccessibleName = "";
+            this.ChooseLayoutListBox.AllowDrop = true;
+            this.ChooseLayoutListBox.FormattingEnabled = true;
+            this.ChooseLayoutListBox.ItemHeight = 24;
+            this.ChooseLayoutListBox.Location = new System.Drawing.Point(1769, 519);
+            this.ChooseLayoutListBox.Name = "ChooseLayoutListBox";
+            this.ChooseLayoutListBox.Size = new System.Drawing.Size(230, 76);
+            this.ChooseLayoutListBox.TabIndex = 4;
+            // 
+            // ChoosePaperSizeLabel
+            // 
+            this.ChoosePaperSizeLabel.AutoSize = true;
+            this.ChoosePaperSizeLabel.Location = new System.Drawing.Point(1764, 644);
+            this.ChoosePaperSizeLabel.Name = "ChoosePaperSizeLabel";
+            this.ChoosePaperSizeLabel.Size = new System.Drawing.Size(214, 25);
+            this.ChoosePaperSizeLabel.TabIndex = 7;
+            this.ChoosePaperSizeLabel.Text = "Choose the paper size:";
+            // 
+            // ChoosePaperSizeListBox
+            // 
+            this.ChoosePaperSizeListBox.AccessibleName = "";
+            this.ChoosePaperSizeListBox.AllowDrop = true;
+            this.ChoosePaperSizeListBox.FormattingEnabled = true;
+            this.ChoosePaperSizeListBox.ItemHeight = 24;
+            this.ChoosePaperSizeListBox.Location = new System.Drawing.Point(1769, 672);
+            this.ChoosePaperSizeListBox.Name = "ChoosePaperSizeListBox";
+            this.ChoosePaperSizeListBox.Size = new System.Drawing.Size(230, 76);
+            this.ChoosePaperSizeListBox.TabIndex = 6;
+            // 
             // PdfGeneratorPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2027, 922);
+            this.Controls.Add(this.ChoosePaperSizeLabel);
+            this.Controls.Add(this.ChoosePaperSizeListBox);
+            this.Controls.Add(this.ChooseLayoutLabel);
+            this.Controls.Add(this.ChooseLayoutListBox);
             this.Controls.Add(this.ChooseImageFitStyleLabel);
             this.Controls.Add(this.ChooseImageFitStyleListBox);
             this.Controls.Add(this.MergeImagesButton);
@@ -109,5 +154,9 @@ namespace PdfTools.Pages
         private System.Windows.Forms.Button MergeImagesButton;
         private System.Windows.Forms.ListBox ChooseImageFitStyleListBox;
         private System.Windows.Forms.Label ChooseImageFitStyleLabel;
+        private System.Windows.Forms.Label ChooseLayoutLabel;
+        private System.Windows.Forms.ListBox ChooseLayoutListBox;
+        private System.Windows.Forms.Label ChoosePaperSizeLabel;
+        private System.Windows.Forms.ListBox ChoosePaperSizeListBox;
     }
 }
